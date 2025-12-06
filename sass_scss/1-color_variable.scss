@@ -1,0 +1,11 @@
+// Définition de la variable
+$ma-couleur: #3D3D3D;
+
+// Application de la couleur
+body {
+  color: $ma-couleur;
+}
+
+p {
+  color: $ma-couleur;
+}
