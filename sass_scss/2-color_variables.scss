@@ -1,12 +1,15 @@
+$back: #6D6D6D;
+$texte: #3D3D3D;
+
 body {
-    color: #3D3D3D;
-    background-color: #6D6D6D;
-  }
-  
-  p {
-    color: #3D3D3D;
-  }
-  
-  h2 {
-    background-color: #6D6D6D;
-  }  
+  color: $texte;
+  background-color: $back;
+}
+
+p {
+  color: $texte;
+}
+
+h2 {
+  background-color: $back;
+}
