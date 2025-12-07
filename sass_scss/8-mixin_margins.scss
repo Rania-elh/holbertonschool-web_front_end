@@ -1,0 +1,14 @@
+// Définition de la mixin
+@mixin margins($value) {
+    margin-left: $value;
+    margin-right: $value;
+  }
+  
+  // Application aux éléments
+  body {
+    @include margins(10px);
+  }
+  
+  div {
+    @include margins(15px);
+  }  
