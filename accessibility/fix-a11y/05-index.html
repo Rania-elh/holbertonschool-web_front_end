@@ -1,70 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <title>Homepage - A fake website</title>
   </head>
   <body>
-    <div class="header">
-      <div>
-        <div>
-          <div>
-            <a href="#">
-              <img src="img/logo.png" alt="Name of the logo">
-            </a>
-          </div>
-          <div class="nav">
-            <div>
-              <p><a href="#">Home</a></p>
-              <p><a href="#">About</a></p>
-              <p><a href="#">Services</a></p>
-              <p><a href="#">Portfolio</a></p>
-              <p><a href="#">Pricing</a></p>
-              <p><a href="#">Pages</a></p>
-              <p><a href="#">Contact</a></p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="section">
-      <div class="container">
-        <div class="row">
-          <div class="col-6">
-            <h6>This is me</h6>
-            <h1>Philip Gilbert</h1>
-            <div>
-              You will begin to realise why this exercise is called the Dickens Pattern with reference to the ghost showing Scrooge some different futures.
-            </div>
-            <a class="primary-btn" href="#">discover now</a>
-          </div>
-          <div class="col-6">
-            <img class="img-fluid" src="hero-img.png" alt="">
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="section">
-      <div class="container">
-        <div class="row">
-          <div class="col-6">
-            <img class="img-fluid" src="about-img.png" alt="About image">
-          </div>
-          <div class="col-5">
-            <h6>About Me</h6>
-            <h1>Personal Details</h1>
-            <p>
-              Here, I focus on a range of items and features that we use in life without giving them a second thought.
-            </p>
-            <a class="primary-btn" href="#">View Full Details</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <div class="footer">
       <div class="container">
         <div class="row">
@@ -84,21 +25,26 @@
 
               <form action="#" method="post">
                 <div class="input-group">
+
                   <input
                     class="form-control"
                     type="email"
                     id="email"
                     name="email"
-                    placeholder="Enter Email Address">
+                    autocomplete="email"
+                    required
+                    aria-required="true">
 
-                  <!-- Accessibility label required by checker -->
                   <label for="email" class="visually-hidden">
                     Email
                   </label>
 
                   <div class="input-group-btn">
-                    <a class="btn" type="submit">Validate</a>
+                    <button class="btn" type="submit">
+                      Validate
+                    </button>
                   </div>
+
                 </div>
               </form>
 
