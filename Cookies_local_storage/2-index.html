@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login and Cookies</title>
+    <style>
+        body {
+            font-family: serif;
+            background-color: white;
+            margin: 0;
+            padding: 40px;
+            color: black;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        .login-section {
+            margin-bottom: 60px;
+        }
+
+        .login-form {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            width: 200px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        button:hover {
+            background-color: #e0e0e0;
+        }
+
+        .cookies-section {
+            margin-top: 40px;
+        }
+
+        #cookies-display {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-section">
+        <h1>Login to the website</h1>
+        <div class="login-form">
+            <input type="text" id="firstname" placeholder="Firstname">
+            <input type="text" id="email" placeholder="Email">
+            <button onclick="setCookies()">Log me in</button>
+        </div>
+    </div>
+
+    <div class="cookies-section">
+        <h1>Cookies</h1>
+        <button onclick="showCookies()">Show the cookies</button>
+        <div id="cookies-display"></div>
+    </div>
+
+    <script>
+        function getCookie(name) {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                const [cookieName, cookieValue] = cookie.split('=');
+                if (cookieName === name) {
+                    return cookieValue || '';
+                }
+            }
+            return '';
+        }
+
+        function setCookies() {
+            const firstnameInput = document.getElementById('firstname');
+            const emailInput = document.getElementById('email');
+            
+            const firstname = firstnameInput.value;
+            const email = emailInput.value;
+            
+            // Set cookies with expiration date (10 days from now)
+            const expirationDate = new Date();
+            expirationDate.setDate(expirationDate.getDate() + 10);
+            
+            document.cookie = `firstname=${firstname}; expires=${expirationDate.toUTCString()}; path=/`;
+            document.cookie = `email=${email}; expires=${expirationDate.toUTCString()}; path=/`;
+        }
+
+        function showCookies() {
+            const cookiesDisplay = document.getElementById('cookies-display');
+            cookiesDisplay.innerHTML = ''; // Clear previous display
+            
+            // Get cookie values using getCookie function
+            const email = getCookie('email');
+            const firstname = getCookie('firstname');
+            
+            // Create paragraph element
+            const p = document.createElement('p');
+            p.innerHTML = `Email: ${email} - Firstname: ${firstname}`;
+            
+            // Append to the display div
+            cookiesDisplay.appendChild(p);
+        }
+    </script>
+</body>
+</html>
+

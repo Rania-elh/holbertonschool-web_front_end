@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            background-color: white;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            padding: 10px;
+            margin: 5px 0;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        li:hover {
+            background-color: #e0e0e0;
+        }
+
+        p {
+            margin-top: 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // Array of available items
+        const availableItems = ['Shampoo', 'Soap', 'Sponge', 'Water'];
+
+        // Check if localStorage is available
+        function isLocalStorageAvailable() {
+            try {
+                const test = '__localStorage_test__';
+                localStorage.setItem(test, test);
+                localStorage.removeItem(test);
+                return true;
+            } catch (e) {
+                return false;
+            }
+        }
+
+        // Add item to cart (localStorage)
+        function addItemToCart(item) {
+            localStorage.setItem(item, 'true');
+        }
+
+        // Create store (list of available items)
+        function createStore() {
+            // Create ul element
+            const ul = document.createElement('ul');
+            
+            // Loop through available items
+            availableItems.forEach(function(item) {
+                // Create list item
+                const li = document.createElement('li');
+                li.textContent = item;
+                
+                // Add click event to call addItemToCart
+                li.addEventListener('click', function() {
+                    addItemToCart(item);
+                });
+                
+                // Append li to ul
+                ul.appendChild(li);
+            });
+            
+            // Append ul to body
+            document.body.appendChild(ul);
+        }
+
+        // Display cart (show previously added items)
+        function displayCart() {
+            // Count items in localStorage
+            let itemCount = 0;
+            
+            // Check each available item to see if it's in localStorage
+            availableItems.forEach(function(item) {
+                if (localStorage.getItem(item) === 'true') {
+                    itemCount++;
+                }
+            });
+            
+            // If there are items in cart, display message
+            if (itemCount > 0) {
+                const p = document.createElement('p');
+                p.textContent = `You previously had ${itemCount} items in your cart`;
+                document.body.appendChild(p);
+            }
+        }
+
+        // Initialize the application
+        if (!isLocalStorageAvailable()) {
+            alert('Sorry, your browser does not support Web storage. Try again with a better one');
+        } else {
+            // Call functions to create store and display cart
+            createStore();
+            displayCart();
+        }
+    </script>
+</body>
+</html>
+
